@@ -1,0 +1,244 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "APIs de To-Do",
+    "description": "Aqui encontraras todos los endpoints",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/ricaldone-588/DocumentacionTo-Do/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/api/tasks": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "getAllTask",
+        "description": "Con este endpoint obtendras todas las tareas en la base de datos\r\n",
+        "operationId": "get-GEt",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "updateTask",
+        "description": "Con este endpoint se actualizara la tarea mediante su id",
+        "operationId": "put-api-tasks",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Se necesita el id de la tarea que se desea actualizar",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_tasks_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "createTask",
+        "description": "Con este endpoint se crean nuevas tareas",
+        "operationId": "post-api-tasks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_tasks_body_1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "418": {
+            "description": "I'm a teapot (RFC 2324)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "deleteTask",
+        "description": "Con este endpoint se eliminara una tarea mediante su id",
+        "operationId": "delete-api-tasks",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Se necesita el id de la tarea que se desea eliminar",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/tasks/:id": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "getTaskById",
+        "description": "Obtiene una tarea en especifico por la id",
+        "operationId": "get-api-tasks-:id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Se requiere el id de la tarea que se desea llamar",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Task": {
+        "title": "Task",
+        "type": "object",
+        "properties": {
+          "title": {
+            "maxLength": 50,
+            "minLength": 3,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 200,
+            "minLength": 5,
+            "type": "string",
+            "x-stoplight": {
+              "id": "vs09mzzkb7q1d"
+            }
+          },
+          "completed": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "od2r0x696qi5v"
+            }
+          }
+        },
+        "description": "Modelo de Task"
+      },
+      "api_tasks_body": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "maxLength": 50,
+            "minLength": 3,
+            "type": "string",
+            "x-stoplight": {
+              "id": "zijmgn7d0r0lx"
+            }
+          },
+          "description": {
+            "maxLength": 200,
+            "minLength": 5,
+            "type": "string",
+            "x-stoplight": {
+              "id": "zmmeixfthw2hh"
+            }
+          },
+          "completed": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "6mgvr8w21s976"
+            }
+          }
+        }
+      },
+      "api_tasks_body_1": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "maxLength": 50,
+            "minLength": 3,
+            "type": "string",
+            "x-stoplight": {
+              "id": "r1nj2cipeuj5g"
+            }
+          },
+          "description": {
+            "maxLength": 200,
+            "minLength": 5,
+            "type": "string",
+            "x-stoplight": {
+              "id": "xnnne7gvh243t"
+            }
+          }
+        }
+      }
+    }
+  }
+}
