@@ -48,9 +48,9 @@ taskController.createTask = async (req, res) => {
         .status(400)
         .json({ message: "Description must be between 5 and 200 characters" });
     }
-    F;
+    ;
 
-    const newTask = new taskModel({ title, description }); // no puese completed porque es false por defecto
+    const newTask = new taskModel({ title, description}); // no puese completed porque es false por defecto
     await newTask.save();
     res.status(200).json(newTask);
   } catch (error) {
